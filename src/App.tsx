@@ -19,12 +19,15 @@ function App() {
       lastName: "James",
       phoneNumber: 8431233211,
       isFavorite: true,
+      image:
+        "https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/1966.png",
     },
     {
       firstName: "Bronny",
       lastName: "James",
       phoneNumber: 1234567890,
       isFavorite: false,
+      image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642355.png",
     },
   ]);
   const addContact = (newContact: Contact): void => {
