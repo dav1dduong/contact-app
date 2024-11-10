@@ -11,6 +11,8 @@ import ContactForm from "./components/ContactForm";
 import Contact from "./models/Contact";
 import { useState } from "react";
 import ContactList from "./components/ContactList";
+
+import ContactDetail from "./components/ContactDetail";
 import FavoritesList from "./components/FavoritesList";
 function App() {
   const [contacts, setContacts] = useState<Contact[]>([
@@ -30,13 +32,29 @@ function App() {
       image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642355.png",
     },
   ]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const addContact = (newContact: Contact): void => {
     setContacts((prev) => [...prev, newContact]);
   };
+  const toggleFav = (index: number): void => {
+    setContacts((prev) => {
+      // step 1: make a copy of prev (arr)
+      const copyOfPrev: Contact[] = prev.slice(0);
+      // step 2: make copy of object to modify (obj)
+      const copyOfObj: Contact = { ...prev[index] };
+      // step 3: mutate copied object
+      copyOfObj.isFavorite = !copyOfObj.isFavorite;
+      // step 4: mutate copied array
+      copyOfPrev[index] = copyOfObj;
+      // step 5: replace og array with mutated array
+      return copyOfPrev;
+    });
+  };
+
   return (
     <>
       <Router>
-        <Header />
+        <Header contacts={contacts} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -45,9 +63,16 @@ function App() {
           />
           <Route
             path="/contact-list"
-            element={<ContactList contacts={contacts} />}
+            element={<ContactList contacts={contacts} onUpdate={toggleFav} />}
           />
-          <Route path="/favorites" element={<FavoritesList />} />
+          <Route
+            path="/favorites"
+            element={<FavoritesList contacts={contacts} onUpdate={toggleFav} />}
+          />
+          <Route
+            path="/contact/:id"
+            element={<ContactDetail contacts={contacts} />}
+          />
         </Routes>
       </Router>
     </>

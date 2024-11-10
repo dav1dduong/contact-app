@@ -3,3 +3,7 @@
   flex-direction: column;
   align-items: center;
 }
+.stroke-text {
+  -webkit-text-stroke: 2px #1d4ed8; /* Adjust the color and size of the stroke */
+  color: white;
+}

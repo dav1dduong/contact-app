@@ -1,10 +1,16 @@
-import { useState } from "react";
-import Contact from "../models/Contact";
+import { useEffect, useState } from "react";
 import "./Home.css";
-import ContactForm from "./ContactForm";
-
+import homeImage from "../assets/home.png";
 const Home = () => {
-  return <main className="Home"></main>;
+  return (
+    <>
+      <img
+        src={homeImage}
+        alt="Home"
+        className="h-auto object-cover m-4 mx-auto w-[80%] sm:w-[30%]"
+      />
+    </>
+  );
 };
 
 export default Home;

@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Custom utility for text outline */
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 2px #000000; /* 2px black outline */
+    color: transparent; /* Make the text itself transparent */
+  }
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("./assets/fonts/Demo_Fonts/Fontspring-DEMO-proximanova-black.otf")
+    format("opentype");
+  font-weight: 700; /* Or adjust based on the font weight */
+  font-style: normal;
+}
+h2 {
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to left, #000000, #000000);
+}
