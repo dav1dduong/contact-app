@@ -30,7 +30,7 @@ const Header = ({ contacts }: Props) => {
   };
 
   return (
-    <header className="flex justify-center items-center p-4 bg-white shadow-md relative">
+    <header className="flex justify-center items-center p-4 bg-white shadow-md relative ">
       {/* Centered Content Section */}
       <div className="flex flex-col items-center space-y-4 max-w-4xl w-full">
         <Link to="/">
@@ -74,8 +74,8 @@ const Header = ({ contacts }: Props) => {
             </h2>
           </Link>
           <Link to="/favorites">
-            <h2 className="text-gray-500 hover:text-blue-500 hover:scale-110 transition-all duration-200">
-              My Favorites
+            <h2 className="font-proxima text-white text-transparent text-5xl hover:text-blue-500 hover:scale-110 transition-all duration-200 stroke-text">
+              FAVORITES
             </h2>
           </Link>
         </div>

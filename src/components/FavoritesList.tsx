@@ -8,7 +8,7 @@ interface Props {
 const FavoritesList = ({ contacts, onUpdate }: Props) => {
   const favoriteContacts = contacts.filter((contact) => contact.isFavorite);
   return (
-    <div className="FavoritesList list-none flex flex-wrap justify-center gap-4 border-2 border-gray-300 rounded-lg p-4 shadow-md w-1/2 mx-auto">
+    <div className="FavoritesList list-none flex flex-wrap justify-center gap-4 border-2 border-gray-300 rounded-lg p-4 shadow-md w-1/2 mx-auto mt-7">
       {favoriteContacts.length > 0 ? (
         favoriteContacts.map((contact) => (
           <ContactCard

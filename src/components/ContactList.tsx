@@ -7,7 +7,7 @@ interface Props {
 }
 const ContactList = ({ contacts, onUpdate }: Props) => {
   return (
-    <ul className="ContactList flex flex-wrap justify-center gap-4 border-2 border-gray-300 rounded-lg p-4 shadow-md w-1/2 mx-auto">
+    <ul className="ContactList flex flex-wrap justify-center gap-4 border-2 border-gray-300 rounded-lg p-4 shadow-md w-1/2 mx-auto mt-7">
       {" "}
       {contacts.map((contact, index) => (
         <ContactCard

@@ -14,6 +14,7 @@ import ContactList from "./components/ContactList";
 
 import ContactDetail from "./components/ContactDetail";
 import FavoritesList from "./components/FavoritesList";
+import UpdateDetail from "./components/UpdateDetail";
 function App() {
   const [contacts, setContacts] = useState<Contact[]>([
     {
@@ -32,7 +33,7 @@ function App() {
       image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642355.png",
     },
   ]);
-  const [searchQuery, setSearchQuery] = useState<string>("");
+
   const addContact = (newContact: Contact): void => {
     setContacts((prev) => [...prev, newContact]);
   };
@@ -50,7 +51,18 @@ function App() {
       return copyOfPrev;
     });
   };
-
+  const updateContact = (updatedContact: Contact) => {
+    setContacts((prevContacts) =>
+      prevContacts.map((contact) =>
+        contact.phoneNumber === updatedContact.phoneNumber
+          ? updatedContact
+          : contact
+      )
+    );
+  };
+  const deleteContact = (index: number): void => {
+    setContacts((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
+  };
   return (
     <>
       <Router>
@@ -71,7 +83,19 @@ function App() {
           />
           <Route
             path="/contact/:id"
-            element={<ContactDetail contacts={contacts} />}
+            element={
+              <ContactDetail
+                contacts={contacts}
+                updateContact={updateContact}
+                deleteContact={deleteContact}
+              />
+            }
+          />
+          <Route
+            path="/contact/update/:id"
+            element={
+              <UpdateDetail contacts={contacts} updateContact={updateContact} />
+            }
           />
         </Routes>
       </Router>
